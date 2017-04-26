@@ -50,23 +50,17 @@ mysql:
   dump: ''
 php:
   install: true
+  version: '5.6'
   packages:
-    - php5.6-cli
-    - php5.6-intl
-    - php5.6-mcrypt
-    - php5.6-mysql
-    - php5.6-gd
-    - php5.6-curl
-    - php5.6-xml
-    - php5.6-zip
-  version: ~
+    - php"{{ php.version }}"-cli
+    - php"{{ php.version }}"-intl
+    - php"{{ php.version }}"-mcrypt
+    - php"{{ php.version }}"-mysql
+    - php"{{ php.version }}"-gd
+    - php"{{ php.version }}"-curl
+    - php"{{ php.version }}"-xml
+    - php"{{ php.version }}"-zip
   display_errors: On
-  phpbrew:
-    cache:
-      repo: 'https://github.com/OXID-eSales/oxvm_assets'
-      ref: 'phpbrew_builds'
-      depth: 1
-      update: true
   xdebug:
     install: '1'
     host: ~
@@ -78,9 +72,9 @@ php:
     prestissimo:
       install: false
   pecl_packages: ~
-  zendguard:
-    install: false
-    pkg_url: https://github.com/OXID-eSales/oxvm_assets/blob/master/zend-loader-php5.6-linux-x86_64.tar.gz?raw=true
+#  zendguard:
+#    install: false
+#    pkg_url: 'https://github.com/OXID-eSales/oxvm_assets/blob/master/zend-loader-php"{{ php.version }}"-linux-x86_64.tar.gz?raw=true'
   ioncube:
     install: false
     pkg_url: http://downloads3.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64_6.0.6.tar.gz

@@ -2,3 +2,14 @@
 - name: restart php5-fpm
   become: yes
   service: name=php5-fpm enabled=yes state=restarted
+  when: php.version == '5.6'
+
+- name: restart php7.0-fpm
+  become: yes
+  service: name=php7-fpm enabled=yes state=restarted
+  when: php.version == '7.0'
+
+- name: restart php7.1-fpm
+  become: yes
+  service: name=php7-fpm enabled=yes state=restarted
+  when: php.version == '7.1'

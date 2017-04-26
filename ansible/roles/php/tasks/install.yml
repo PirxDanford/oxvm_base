@@ -7,9 +7,20 @@
   become: yes
   apt: update_cache=yes
 
-- name: Install php5
+- name: Install php 5.6
   become: yes
   apt: pkg=php5.6 state=latest
+  when: php.version == '5.6'
+  
+- name: Install php 7.0
+  become: yes
+  apt: pkg=php7.0 state=latest
+  when: php.version == '7.0'
+
+- name: Install php 7.1
+  become: yes
+  apt: pkg=php7.1 state=latest
+  when: php.version == '7.1'
 
 - name: Install PHP Packages
   become: yes
@@ -21,4 +32,3 @@
 
 - include: configure.yml
 - include: pecl.yml
-- include: phpbrew.yml
